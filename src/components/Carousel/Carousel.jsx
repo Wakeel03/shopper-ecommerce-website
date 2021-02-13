@@ -1,4 +1,5 @@
 import './Carousel.css'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 import React, { useState, useEffect } from 'react'
 import sunglasses from '../../img/sunglasses.jpg'
@@ -33,10 +34,10 @@ function Carousel() {
         <>
         <div className="carousel">
             <div onClick={slideLeft} className="carousel__navigationArrow leftArrow">
-                
+                <IoIosArrowBack />
             </div>
             <div  onClick={slideRight} className="carousel__navigationArrow rightArrow">
-
+                <IoIosArrowForward />
             </div>
  
             <div className={carouselItem}>
