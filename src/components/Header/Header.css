@@ -1,0 +1,44 @@
+.header{
+    height: 60px;
+    background-color: var(--secondary-color);
+    padding: 0 100px;
+    display: flex;
+    align-items: center;
+}
+
+.header__logo{
+    flex: 2;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.header__tabs{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header__tab{
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 32px;
+}
+
+.header__addToCart{
+    width: 40px;
+    height: 40px;
+    background-color: aqua;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.header__profile{
+    width: 40px;
+    height: 40px;
+    background-color: aqua;
+    border-radius: 20px;
+}
