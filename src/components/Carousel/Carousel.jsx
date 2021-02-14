@@ -1,5 +1,7 @@
 import './Carousel.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import CarouselItem from '../CarouselItem/CarouselItem.jsx'
+import db from '../../firebase'
 
 import React, { useState, useEffect } from 'react'
 import sunglasses from '../../img/sunglasses.jpg'
@@ -8,6 +10,19 @@ function Carousel() {
 
     const [carouselItem, setCarouselItem] = useState("carousel__item")
     const [currentSlide, setCurrentSlide] = useState(0)
+
+    const [carouselItemList, setCarouselItemList] = useState([])
+
+    useEffect (() => {
+        db.collection('products').onSnapshot(snapshot => {
+            setCarouselItemList(
+                snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    data: doc.data()
+                }))
+            )
+        })
+    }, [])
 
     useEffect(() => {
         if (currentSlide === 0){
@@ -39,43 +54,10 @@ function Carousel() {
             <div  onClick={slideRight} className="carousel__navigationArrow rightArrow">
                 <IoIosArrowForward />
             </div>
- 
-            <div className={carouselItem}>
-                <div className="carousel__itemInfo">
-                    <h2>Super Shopper Sunglasses</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    <h1>$ 29.99</h1>
-                    <button>Shop Now</button>
-                </div>
-                <img src={sunglasses} alt="" className="carousel__itemImg" />
-            </div>
-            <div className={carouselItem}>
-                <div className="carousel__itemInfo">
-                    <h2>Food Trip</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    <h1>$ 29.99</h1>
-                    <button>Shop Now</button>
-                </div>
-                <img src={sunglasses} alt="" className="carousel__itemImg" />
-            </div>
-             <div className={carouselItem}>
-                <div className="carousel__itemInfo">
-                    <h2>Caramel</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    <h1>$ 29.99</h1>
-                    <button>Shop Now</button>
-                </div>
-                <img src={sunglasses} alt="" className="carousel__itemImg" />
-            </div>
-            <div className={carouselItem}>
-                <div className="carousel__itemInfo">
-                    <h2>Crousitillant</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    <h1>$ 29.99</h1>
-                    <button>Shop Now</button>
-                </div>
-                <img src={sunglasses} alt="" className="carousel__itemImg" />
-            </div>
+
+            {carouselItemList.map(item => (
+                <CarouselItem key={item.id} carouselItem={carouselItem} data={item.data}/>
+            ))}
         </div>
         <div className="carousel__navigation">
             {Array(4).fill(1).map((el, ind) => (

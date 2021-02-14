@@ -1,6 +1,6 @@
 .productCard{
     background-color: var(--primary-color);
-    height: 400px;
+    height: 480px;
     border-radius: 5px;
     color: #ffffff;
     box-shadow: 2px 3px 4px #acacac;
@@ -13,9 +13,13 @@
 }
 
 .productCard img{
-    width: 100%;
-    max-height: 220px;
-    object-fit: contain;
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 240px;
+    max-height: 240px;
+    width: auto;
+    height: auto;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -39,7 +43,7 @@
 }
 
 .productCard__infoShop h1{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     margin-bottom: 10px;
 }
@@ -48,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    margin-bottom: 20px;
 }
 
 .productCard__infoShop button{
