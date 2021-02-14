@@ -34,75 +34,7 @@
     right: 30px;
 }
 
-.carousel__item{
-   min-width: 100%;
-   max-width: 100%;
-   height: 360px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: relative;
-   transition: left 300ms ease-out
-}
 
-.left{
-    left: 0;
-}
-
-.left-100{
-    left: -100%;
-}
-
-.left-200{
-    left: -200%;
-}
-
-.left-300{
-    left: -300%;
-}
-
-.carousel__itemInfo{
-    flex: 1;
-    max-width: 500px;
-    padding: 0 40px;
-}
-
-.carousel__itemInfo h2{
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--secondary-color);
-    margin-bottom: 14px;
-}
-
-.carousel__itemInfo p{
-    font-size: 14px;
-    margin-bottom: 24px;
-}
-
-.carousel__itemInfo h1{
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--primary-color);
-    margin-bottom: 24px;
-}
-
-.carousel__itemInfo button{
-    width: 120px;
-    height: 40px;
-    background-color: var(--secondary-color);
-    color: #ffffff;
-    text-transform: uppercase;
-    font-weight: 600;
-    border: none;
-    border-radius: 2px;
-}
-
-.carousel__itemImg{
-    flex: 1;
-    max-width: 500px;
-    height: 100%;
-    object-fit: contain;
-}
 
 
 .carousel__navigation{

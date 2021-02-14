@@ -3,15 +3,15 @@ import  fountainPen from '../../img/fountainPen.jpg'
 
 import React from 'react'
 
-function ProductCard() {
+function ProductCard({data}) {
     return (
         <div className="productCard">
-            <img src={fountainPen} alt=""/>
+            <img src={data.image} alt=""/>
             <div className="productCard__info">
-                <h2>Fountain Pen</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+                <h2>{data.name}</h2>
+                <p>{data.description}</p>
                 <div className="productCard__infoShop">
-                    <h1>$64.99</h1>
+                    <h1>${data.price}</h1>
                     <button>Add to Cart</button>
                 </div>
                 
