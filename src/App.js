@@ -2,10 +2,10 @@ import './App.css';
 import Header from './components/Header/Header.jsx'
 import Carousel from './components/Carousel/Carousel.jsx'
 import ProductSection from './components/ProductSection/ProductSection.jsx'
+import Cart from './components/Cart/Cart'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import { login , logout, selectUser } from './redux/userSlice'
 
@@ -19,8 +19,6 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth){
-        console.log(userAuth)
-
         dispatch(login({
           uid: userAuth.uid,
           email: userAuth.email
@@ -29,11 +27,8 @@ function App() {
         dispatch(logout())
       }
     })
-
     return unsubscribe
   }, [])
-
-  
 
   return (
     <Router>
@@ -49,10 +44,19 @@ function App() {
               <ProductSection />
             </div>
             :
-            <h1>Login to view the Home Page</h1>
+            <Redirect to="/"/>
           }
         </Route>
-        
+        <Route exact path="/cart">
+          {user ?  
+            <div className="app">
+              <Header />
+              <Cart />
+            </div>
+            :
+            <Redirect to="/" />
+          }
+        </Route>
       </Switch>
     </Router>
     

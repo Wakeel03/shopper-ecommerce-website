@@ -24,7 +24,7 @@ function ProductSection() {
             <h1>Our Products</h1>
             <div className="productSection__list">
                 {carouselItemList.map(item => (
-                    <ProductCard key={item.id} data={item.data}/>
+                    <ProductCard key={item.id} id={item.id} data={item.data}/>
                 ))}
             </div>
         </div>

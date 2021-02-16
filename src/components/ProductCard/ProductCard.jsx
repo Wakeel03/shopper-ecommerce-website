@@ -1,9 +1,17 @@
 import './ProductCard.css'
-import  fountainPen from '../../img/fountainPen.jpg'
-
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
-function ProductCard({data}) {
+import { addToCart, emptyCart } from '../../redux/cartItemSlice'
+
+function ProductCard({id, data}) {
+
+    const dispatch = useDispatch()
+
+    const addItemToCart = () => {
+        dispatch(addToCart(id))
+    }
+
     return (
         <div className="productCard">
             <img src={data.image} alt=""/>
@@ -12,7 +20,7 @@ function ProductCard({data}) {
                 <p>{data.description}</p>
                 <div className="productCard__infoShop">
                     <h1>${data.price}</h1>
-                    <button>Add to Cart</button>
+                    <button onClick={addItemToCart}>Add to Cart</button>
                 </div>
                 
             </div>

@@ -39,13 +39,17 @@ function UserAuth() {
 
     return (
         <div className="userAuth">
+            <h1>Shopper</h1>
             <form>
                 <label>Email</label>
                 <input ref={email} type="email" placeholder="Enter your email address"/>
                 <label>Password</label>
                 <input ref={password} type="password" placeholder="Enter a password"/>
                 <button onClick={login}>Login</button>
-                <button onClick={signUp}>Sign Up</button>
+                <div className="userAuth__signup">
+                    <h2>Don't have an account?</h2>
+                    <button onClick={signUp}>Sign Up</button>
+                </div>
 
             </form>
         </div>
