@@ -65,5 +65,5 @@
     flex: 1;
     max-width: 500px;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }

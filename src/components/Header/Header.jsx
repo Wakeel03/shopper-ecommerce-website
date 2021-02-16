@@ -5,14 +5,20 @@ import { CgProfile } from 'react-icons/cg'
 import { useHistory } from 'react-router-dom'
 import { auth } from "../../firebase";
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import { selectUser } from '../../redux/userSlice'
 import { useSelector } from 'react-redux'
 
+import { cartItems } from '../../redux/cartItemSlice'
+
 function Header() {
     const user = useSelector(selectUser)
     const history = useHistory()
+
+    const items = useSelector(cartItems)
+
+    const [openProfileDropDown, setOpenProfileDropDown] = useState(false)
 
     const signOut = () => {
         if (user) {
@@ -31,9 +37,20 @@ function Header() {
            </div>
            <div className="header__cart">
                 <AiOutlineShoppingCart className="header__addToCart" />
-                <div className="header__cartNumberItems">5</div>
+                <div className="header__cartNumberItems">{items.length}</div>
            </div>
-           <CgProfile onClick={signOut} className="header__profile" />
+           <div className="header__profileContainer">
+               <CgProfile onClick={() => setOpenProfileDropDown(!openProfileDropDown)} className="header__profile" />
+                {openProfileDropDown && 
+                    <div className="header__profileDropDown">
+                        <p>Profile</p>
+                        <p>Settings</p>
+                        <p>Payment</p>
+                        <button onClick={signOut}>Sign Out</button>
+                    </div>
+                }
+           </div>
+           
         </div>
     )
 }
