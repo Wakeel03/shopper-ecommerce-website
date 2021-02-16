@@ -37,19 +37,26 @@ function App() {
           <UserAuth />
         </Route>
         <Route exact path="/home">
-          {true ?
+          {user ?
             <div className="app">
               <Header />
-              <Cart />
-              {/*
               <Carousel />
-              <ProductSection /> */}
+              <ProductSection />
             </div>
             :
             <Redirect to="/"/>
           }
         </Route>
-        
+        <Route exact path="/cart">
+          {user ?  
+            <div className="app">
+              <Header />
+              <Cart />
+            </div>
+            :
+            <Redirect to="/" />
+          }
+        </Route>
       </Switch>
     </Router>
     
