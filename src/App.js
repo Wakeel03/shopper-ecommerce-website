@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header/Header.jsx'
 import Carousel from './components/Carousel/Carousel.jsx'
 import ProductSection from './components/ProductSection/ProductSection.jsx'
+import Paypal from './components/PayPal/Paypal'
 import Cart from './components/Cart/Cart'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
@@ -52,6 +53,15 @@ function App() {
             <div className="app">
               <Header />
               <Cart />
+            </div>
+            :
+            <Redirect to="/" />
+          }
+        </Route>
+        <Route exact path="/checkout">
+          {user ?  
+            <div className="app">
+              <Paypal />
             </div>
             :
             <Redirect to="/" />

@@ -7,13 +7,17 @@ import { cartItemCount } from '../../redux/cartItemSlice'
 
 import db  from '../../firebase'
 
-import CartItem from './CartItem'
+import { useHistory } from 'react-router-dom'
 
+import CartItem from './CartItem'
+import Paypal from '../PayPal/Paypal'
 import React, { useState, useEffect } from 'react'
 
 function Cart() {
 
     const dispatch = useDispatch()
+
+    const history = useHistory()
 
     const itemSelector = useSelector(cartItems)
     const itemCount = useSelector(cartItemCount)
@@ -58,7 +62,13 @@ function Cart() {
         )})
     }, [])
 
-    
+
+    const clearCart = () => {
+        dispatch(emptyCart())
+        setItemList([])
+        setTotalCost(0)
+        setShipping(0)
+    }
 
     return (
         <div className="cart">
@@ -105,14 +115,8 @@ function Cart() {
                             <h3>$ {grandTotal}</h3>
                         </div>
                     </div>
-                    <button onClick={() => console.log(itemList)}>Proceed to Checkout</button>
-                    <button className="cart__removeCartBtn" onClick={() => {
-                                dispatch(emptyCart())
-                                setItemList([])
-                                setTotalCost(0)
-                                setShipping(0)
-                            }
-                        }>Remove Cart</button>
+                    <Paypal itemList={itemList} setItemList={setItemList} grandTotal={grandTotal} clearCart={clearCart}/>
+                    <button className="cart__removeCartBtn" onClick={clearCart}>Clear Cart</button>
                 </div>
             </div>
         </div>
