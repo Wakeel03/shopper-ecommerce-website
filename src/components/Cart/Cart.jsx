@@ -75,7 +75,7 @@ function Cart() {
             <h1>Cart</h1>
             <div className="cart__tabs">
                 <div className="cart__tab">Order Items</div>
-                <div className="cart__tab">Shipping Details</div>
+                {/* <div className="cart__tab">Shipping Details</div> */}
             </div>
             <div className="cart__details">
                 <div className="cart__order">
@@ -92,7 +92,7 @@ function Cart() {
                         ))}
                         
                     </div>
-                    <button>Shipping Details</button>
+                    {/* <button>Shipping Details</button> */}
                 </div>
 
                 <div className="cart__orderDetails">
