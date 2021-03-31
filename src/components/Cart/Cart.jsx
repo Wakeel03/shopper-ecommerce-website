@@ -17,10 +17,9 @@ function Cart() {
 
     const dispatch = useDispatch()
 
-    const history = useHistory()
+    // const history = useHistory()
 
     const itemSelector = useSelector(cartItems)
-    const itemCount = useSelector(cartItemCount)
     const [itemList, setItemList] = useState([])
 
     const [totalCost, setTotalCost] = useState(0)
@@ -34,15 +33,17 @@ function Cart() {
     }
 
     const decreaseItem = (id, price) => {
-        setTotalCost(totalCost => totalCost - price)
+        setTotalCost(totalCost => Math.max(totalCost - price, 0))
         dispatch(removeFromCart(id))
     }
 
     useEffect(() => {
+       if (totalCost <= 0) setShipping(0)
        setGrandTotal (Math.floor((totalCost + tax + shipping) * 100) / 100)
     }, [tax, shipping])
 
     useEffect(() => {
+        totalCost > 0 ? setShipping(4.99) : setShipping(0)
         setTax(Math.floor(0.1 * totalCost * 100) / 100)
     }, [totalCost])
 
@@ -50,7 +51,7 @@ function Cart() {
         
         setItemList([])
         setTotalCost(0)
-        setShipping(2.99)
+        setShipping(0)
     
         itemSelector.forEach(item =>{
             db.collection('products').doc(item.id).get().then(snapshot => {

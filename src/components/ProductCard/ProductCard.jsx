@@ -2,7 +2,7 @@ import './ProductCard.css'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addToCart, emptyCart } from '../../redux/cartItemSlice'
+import { addToCart } from '../../redux/cartItemSlice'
 
 function ProductCard({id, data}) {
 

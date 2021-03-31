@@ -4,22 +4,23 @@ import CarouselItem from '../CarouselItem/CarouselItem.jsx'
 import db from '../../firebase'
 
 import React, { useState, useEffect } from 'react'
-import sunglasses from '../../img/sunglasses.jpg'
 
 function Carousel() {
 
     const [carouselItem, setCarouselItem] = useState("carousel__item")
     const [currentSlide, setCurrentSlide] = useState(0)
 
+    const carouselLength = 4
+
     const [carouselItemList, setCarouselItemList] = useState([])
 
     useEffect (() => {
-        db.collection('products').onSnapshot(snapshot => {
+        db.collection('products').where('onCarousel', '==', 'true').onSnapshot(snapshot => {
             setCarouselItemList(
                 snapshot.docs.map(doc => ({
                     id: doc.id,
                     data: doc.data()
-                }))
+                })).sort(() => Math.random() - 0.5).slice(0, carouselLength)
             )
         })
     }, [])
@@ -56,11 +57,11 @@ function Carousel() {
             </div>
 
             {carouselItemList.map(item => (
-                <CarouselItem key={item.id} carouselItem={carouselItem} data={item.data}/>
+                <CarouselItem key={item.id} id={item.id} carouselItem={carouselItem} data={item.data}/>
             ))}
         </div>
         <div className="carousel__navigation">
-            {Array(4).fill(1).map((el, ind) => (
+            {Array(carouselLength).fill(1).map((el, ind) => (
                 <div onClick={() => setCurrentSlide(ind)} className={`carousel__navigationDot ${ind === currentSlide ? 'active' : ''}`}></div>
             ))}
         </div>

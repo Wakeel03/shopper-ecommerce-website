@@ -3,14 +3,20 @@
     margin: 40px auto;
 }
 
-.productSection > h1{
+.productSection__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.productSection__header > h1{
     font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 24px;
 }
 
-.productSection > h1:after{
+.productSection__header > h1:after{
     content: "";
     display: block;
     margin-top: 3px;
@@ -20,11 +26,18 @@
     background-color: var(--primary-color);
 }
 
+.productSection__header select{
+    width: 170px;
+    height: 40px;
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
 .productSection__list{
     width: 100%;
     display: grid;
     grid-gap: 26px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, .8fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, .8fr));
     grid-row-gap: 40px;
 }
 
