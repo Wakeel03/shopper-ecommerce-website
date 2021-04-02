@@ -12,7 +12,7 @@
 Shopper was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## :blue_book:  Description
-Shopper is fully functional e-commerce website made with React. From user authentication using Firebase to adding products to your cart and payment handling with Paypal,Shopper incorporates all the main functionalities of a modern online shopping platform.
+Shopper is a fully functional e-commerce website made with React. From user authentication using Firebase to adding products to your cart and payment handling with Paypal,Shopper incorporates all the main functionalities of a modern online shopping platform.
 
 ## :point_right:  Run the project
 In the project directory, you can run:
